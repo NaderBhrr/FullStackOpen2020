@@ -1,41 +1,60 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Hello = (props) => {
-  return (
-    <div>
-      <p>Hello {props.name}, you are {props.age} years old</p>
-    </div>
-  )
-}
-
-const App = () => {
-  const name = "Peter"
-  const age = 10
-  // const b = 20
-    
-  // console.log("Hello from component :)")
+const Header = (props) => {
   return (
     <>
-      <h1>Greetings</h1>
-      <Hello name="Nader"  age={26+10}/>
-      <Hello name={name} age={age} />
-      <Hello />
-      {/* <p>Hello World, today is {now.toString()}</p>
-      <p>
-        {a} plus {b} is {a+b}
-      </p> */}
+      <h1>{props.course}</h1>
     </>
-
   )
 }
+
+const Content = (props) => {
+  return (
+    <>
+       <p>
+          {props.part1}: {props.exercises1}
+        </p>
+        <p>
+          {props.part2}: {props.exercises2}
+        </p>
+        <p>
+          {props.part3}: {props.exercises3}
+        </p>
+    </>
+  )
+}
+
+  const Total = (props) => {
+    return (
+      <>
+        <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
+      </>
+    )
+  }
+
+const App = () => {
+
+  const course = 'Half stack application development'
+  const part1 = 'Fundamentals of react'
+  const exercises1 = 10
+  const part2 = 'Using props to pass data'
+  const exercises2 = 7
+  const part3 = 'State of a component'
+  const exercises3 = 14
+
+  return (
+    <>
+      <Header course={course} />
+      <Content part1={part1} exercises1={exercises1} part2={part2} exercises2={exercises2} part3={part3} exercises3={exercises3} />
+      <Total exercises1={exercises1} exercises2={exercises2} exercises3={exercises3}/>
+    </>
+  )
+}
+
+
 
 ReactDOM.render(
     <App />,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-
